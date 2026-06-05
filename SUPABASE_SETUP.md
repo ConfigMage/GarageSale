@@ -42,8 +42,11 @@ Only emails listed in `admin_users` can insert, update, delete, or upload.
 In Supabase Auth settings:
 
 - Enable email magic links.
+- Set Site URL to your deployed site, for example `https://your-site.vercel.app`.
 - Add your local URL to allowed redirect URLs: `http://localhost:3000/admin`
 - Add your Vercel URL to allowed redirect URLs: `https://your-site.vercel.app/admin`
+- If Supabase sends you to `/` with tokens in the URL, the app will recover and
+  redirect to `/admin`, but the allowed redirect URLs should still be configured.
 
 ## 5. Use The Admin Portal
 
