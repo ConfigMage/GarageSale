@@ -44,7 +44,7 @@ const config: Config = {
       keyframes: {
         ticker: {
           "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(calc(-1 * var(--ticker-width)))" },
         },
         pulseLive: {
           "0%, 100%": { opacity: "1" },

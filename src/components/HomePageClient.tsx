@@ -17,8 +17,13 @@ type HomePageClientProps = {
   saleDate: string;
 };
 
-const ticker =
-  "Breaking: Decorative bowl still available * Mystery cables priced to move * Mom willing to negotiate within reason * ";
+const tickerItems = [
+  "Breaking: Decorative bowl still available",
+  "Mystery cables priced to move",
+  "Mom willing to negotiate within reason",
+  "Lamp described as having personality",
+  "Tiny table receiving big-time attention",
+];
 
 export function HomePageClient({ items, saleDate }: HomePageClientProps) {
   const [cart, setCart] = useState<CartEntry[]>([]);
@@ -150,11 +155,24 @@ export function HomePageClient({ items, saleDate }: HomePageClientProps) {
         </div>
 
         <div className="relative overflow-hidden border-y-4 border-broadcast-ink bg-broadcast-gold py-3 text-broadcast-ink">
-          <div className="flex w-[200%] animate-ticker whitespace-nowrap text-sm font-black uppercase tracking-wide">
-            <span className="w-1/2 px-4">{ticker.repeat(3)}</span>
-            <span className="w-1/2 px-4" aria-hidden="true">
-              {ticker.repeat(3)}
-            </span>
+          <div
+            className="flex w-max animate-ticker whitespace-nowrap text-sm font-black uppercase tracking-wide [--ticker-width:104rem]"
+            aria-label={tickerItems.join(" • ")}
+          >
+            {[0, 1].map((group) => (
+              <div
+                key={group}
+                className="flex w-[104rem] shrink-0 items-center justify-around gap-8 px-4"
+                aria-hidden={group === 1}
+              >
+                {tickerItems.map((item) => (
+                  <span key={`${group}-${item}`} className="inline-flex items-center gap-8">
+                    {item}
+                    <span aria-hidden="true">•</span>
+                  </span>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
       </section>
